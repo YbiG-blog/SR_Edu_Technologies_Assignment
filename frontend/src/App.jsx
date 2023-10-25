@@ -1,10 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from "react";
 
-const App = ()=>{
+import Home from "./components/home";
+const App = () => {
   return (
-    <h1>T-Do-List</h1>
+    <>
+    <Home />
+    </>
   );
-}
+} 
 
 export default App;

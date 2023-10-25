@@ -4,8 +4,8 @@ const addToDo = async ({ body }, res) => {
 try{
     const { task } = body;
     const newTask = new ToDoList({ task });
-    await newTask.save();
-   return res.status(200).json({success: true, message: "Data has been added." });
+    const saveTask = await newTask.save();
+   return res.status(200).json({success: true, message: "Data has been added.", data : saveTask });
 } catch (err) {
    return res.status(200).json({success: false, message: "Server error.", error: err.message });
 } };
