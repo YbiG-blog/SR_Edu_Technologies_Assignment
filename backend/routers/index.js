@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { addToDo, getToDoList, deleteToDo, markCompleted } = require('../controllers/getToDoList');
+const { addToDo, getToDoList, deleteToDo, markCompleted } = require('../controllers/toDoList');
 
 router.post('/addToDo', addToDo);
 router.get('/getToDoList', getToDoList);

@@ -98,6 +98,13 @@
     height: 5vh;
 }
 
+.checkbox{
+    width: 2vw;
+    height: 5vh;
+    margin: 5px;
+    padding: 5px;
+}  
+
 @media screen and (max-width: 476px) {
     .to-do-list .input-area input{
         flex-direction: row;

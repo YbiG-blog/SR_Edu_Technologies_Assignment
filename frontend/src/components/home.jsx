@@ -32,14 +32,36 @@ const addToDo = async () => {
    const newData = res.data;
    setDataList([...dataList, newData.data]);
    setNewTask("");
+   alert("Task added successfully.");
 }
   catch (error) {
   console.log(error);
 } };
 
+const deleteToDo = async ( taskId ) => {
+  try {   
+   await axios.delete(`${backendApi}/deleteToDo/${taskId}`);
+   const updatedTasks = dataList.filter((task) => task._id !== taskId);
+   setDataList(updatedTasks);
+   alert("Task deleted successfully.");
+}
+  catch (error) {
+  console.log(error);
+} };
 
-    return (
-      <>
+const toggleTaskCompletion = async ( taskId ) => {
+  try {
+    const updatedTask = await axios.put(`${backendApi}/markCompleted/${taskId}`);
+    const updatedDataList = dataList.map((task) =>
+      task._id === taskId ? updatedTask.data.data : task );
+    setDataList(updatedDataList);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+return (
+    <>
       <div className="to-do-heading">
         <h1 >My-To-Do-List</h1>
       </div>
@@ -51,23 +73,27 @@ const addToDo = async () => {
           <div className="show-list-item">
           {
             dataList.length > 0 ?(
-            dataList.map((item, index) => {
+            dataList.map((item) => {
               if(item === "") return null;
               return (
                 <div className="each-item">
-                <li key={ index }> { item.task }</li>
-                <button style={ { backgroundColor: backgroundColor[1], color : 'red' }} onClick={ () => {
-                  dataList.splice(index, 1);
-                  setDataList((prevList) => [...prevList]);
-                } }>x</button>
+                 <input className="checkbox"
+                 type="checkbox"
+                 checked={ item.isCompleted }
+                 onChange={() => toggleTaskCompletion(item._id)}
+                />
+                <li key={ item._id } >
+                { item.task } </li>
+                <button style={ { backgroundColor: backgroundColor[1], color : 'red' }} 
+                onClick={() => deleteToDo(item._id)}>x</button>
               </div>)
             })
-            ):( <h1> No item in the list</h1> )  
+            ):( <h1> No task in the To-Do-List</h1> )  
           }
           </div>
         </div>
-      </>
-    );
+    </>
+  );
 }
 
 export default Home;

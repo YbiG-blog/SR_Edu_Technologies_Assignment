@@ -20,7 +20,8 @@ try{
 
 const deleteToDo = async ({ params }, res) => {
 try{
-    const { _id } = req.params;
+    const { _id } = params;
+    console.log(_id);
     const toDoList = await ToDoList.findByIdAndDelete( _id );
     if(!toDoList) return res.status(200).json({success: false, message: "Data not found." });
 
@@ -31,9 +32,9 @@ try{
 
 const markCompleted = async ({ params }, res) => {
 try{
-   const { _id } = req.params;
-   const toDoList = await ToDoList.findByIdAndUpdate( _id , {$set: { isCompleted: true }}, { new: true });
-   return res.status(200).json({success: true, message: "Data has been mark as completed.", data: toDoList });
+   const { _id } = params;
+   const updatedTask = await ToDoList.findByIdAndUpdate( _id , {$set: { isCompleted: true }}, { new: true });
+   return res.status(200).json({success: true, message: "Data has been mark as completed.", data: updatedTask });
 } catch (err) {
    return res.status(200).json({success: false, message: "Server error.", error: err.message });
 } };
