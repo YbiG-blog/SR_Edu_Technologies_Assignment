@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './home.css';
-const backendApi = "http://localhost:8000/api/v1";
+const backendApi = "https://quaint-blue-penguin.cyclic.app/api/v1";
 
 const Home = () => {
 

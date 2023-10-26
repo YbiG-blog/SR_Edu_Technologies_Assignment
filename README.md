@@ -65,6 +65,7 @@ By default, the backend runs on port 8000. It provides API endpoints for managin
 - MongoDB (as the database)
 
 # Deployment
-You can access the deployed application at the following link:
+You can access the deployed application at the following link :
+`https://to-do-list-sredu.netlify.app/`
 
 
