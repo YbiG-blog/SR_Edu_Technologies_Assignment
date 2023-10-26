@@ -55,6 +55,7 @@ const toggleTaskCompletion = async ( taskId ) => {
     const updatedDataList = dataList.map((task) =>
       task._id === taskId ? updatedTask.data.data : task );
     setDataList(updatedDataList);
+    alert("Task marked as completed.");
   } catch (error) {
     console.error(error);
   }
@@ -67,7 +68,7 @@ return (
       </div>
         <div className="to-do-list">
           <div className="input-area">
-          <input type="text" placeholder="Add item " value={ newTask } onChange={ addIntoList }/>
+          <input type="text" className ="text-field" placeholder="Add a new task" value={ newTask } onChange={ addIntoList }/>
           <button  style={ { backgroundColor: backgroundColor[0] }} onClick={ addToDo }>+</button>
           </div>
           <div className="show-list-item">

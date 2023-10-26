@@ -96,8 +96,11 @@
     padding: 5px;
     width: 96%;
     height: 5vh;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
+.text-field{  padding: 5px; }
 .checkbox{
     width: 2vw;
     height: 5vh;

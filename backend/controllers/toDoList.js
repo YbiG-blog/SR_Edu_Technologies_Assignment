@@ -21,7 +21,6 @@ try{
 const deleteToDo = async ({ params }, res) => {
 try{
     const { _id } = params;
-    console.log(_id);
     const toDoList = await ToDoList.findByIdAndDelete( _id );
     if(!toDoList) return res.status(200).json({success: false, message: "Data not found." });
 
